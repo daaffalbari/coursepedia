@@ -25,7 +25,7 @@ function nav(){
         Coursepedia
       </a>
       <div class="d-flex justify-content-end">
-      <a href="./view/login/login.php" class="btn btn-primary">Login</a>
+      <a href="./admin/index.php" class="btn btn-primary">Login</a>
     </div>
     </div>
   </nav>

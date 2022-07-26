@@ -28,9 +28,83 @@ include_once("layout.php");
 
     <!-- Main content -->
     <section class="content">
-      <a class="btn btn-app">
+    <?php 
+        if(isset($_GET["success"]))
+        {
+            $success = $_GET["success"];
+            if($success == 1)
+              showSuccess("Data berhasil disimpan.");
+            else if($success == 2)
+              showSuccess("Data berhasil diubah.");
+            else if($success == 3)
+              showSuccess("Data berhasil dihapus.");
+        }
+      ?>
+    <button type="button" class="btn btn-app" data-toggle="modal" data-target="#modal-lg">
         <i class="fas fa-plus"></i> Tambah
-      </a>
+      </button>
+
+      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-warning">
+                  Launch Warning Modal
+                </button>
+
+       <div class="modal fade" id="modal-warning">
+        <div class="modal-dialog">
+          <div class="modal-content bg-warning">
+            <div class="modal-header">
+              <h4 class="modal-title">Warning Modal</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>One fine body&hellip;</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-outline-dark">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+      
+      <div class="modal fade" id="modal-lg">
+        <div class="modal-dialog modal-lg">
+        <form action="admin-gurustaff-simpan.php" method="post">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Tambah Data Kelas</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">  
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="id_kelas">Kode Kelas</label>
+                    <input type="text" class="form-control" id="id_kelas" maxlength="8" name="id_kelas" value="<?php echo kodeOtomatisKelas() ?>" autocomplete="off" readonly>
+                  </div>
+                  <div class="form-group">
+                    <label for="nama">Nama Kelas</label>
+                    <input type="text" class="form-control" id="nama" maxlength="50" name="nama" placeholder="Masukan Nama Kelas" autocomplete="off">
+                  </div>    
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+              <button type="submit" name="btnSimpan" class="btn btn-primary">Simpan</button>
+            </div>
+          </div>
+          </form>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
@@ -66,7 +140,7 @@ include_once("layout.php");
                                   <td class='dtr-control sorting_1' tabindex='0'>".$row['id_kelas']."</td>
                                   <td>".$row['nama']."</td>
                                   <td>
-                                      <a href='admin-kelas.php?aksi=ubah&id_kelas=".$row['id_kelas']."' class='btn btn-sm btn-info'><i class='fas fa-edit'></i></a> | 
+                                      <a href='admin-kelas-edit.php?id_kelas=".$row['id_kelas']."' class='btn btn-sm btn-info'><i class='fas fa-edit'></i></a> | 
                                       <a href='admin-kelas.php?aksi=hapus&id_kelas=".$row['id_kelas']."' class='btn btn-sm btn-danger'><i class='fas fa-trash'></i></a>
                                   </td>
                               </tr>";
