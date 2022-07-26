@@ -27,5 +27,5 @@
 
 ## How to Clone
 - Buka Terminal / CMD
-- Clone project <code>git clone https://github.com/daaffalbari/courspedia.git</code>
+- Clone project <code>git clone https://github.com/agustiarfajar/coursepedia.git</code>
 - cd courspedia
