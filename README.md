@@ -28,4 +28,4 @@
 ## How to Clone
 - Buka Terminal / CMD
 - Clone project <code>git clone https://github.com/agustiarfajar/coursepedia.git</code>
-- cd courspedia
+- cd coursepedia
