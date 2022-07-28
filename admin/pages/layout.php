@@ -47,9 +47,9 @@ function style_section()
 <div class="wrapper">
 
   <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
+  <!-- <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="../dist/img/logo-cp-black.png" alt="logo-cp" height="60" width="60">
-  </div>
+  </div> -->
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -236,7 +236,7 @@ function style_section()
     </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2022 <a href="#">COURSEPEDIA</a>.</strong>
+    <strong>Copyright &copy; 2022 <a href="admin-dashboard.php">COURSEPEDIA</a>.</strong>
     All rights reserved.
     <!-- <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.2.0
