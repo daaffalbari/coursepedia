@@ -7,9 +7,9 @@ if($db->connect_errno==0)
 {
     if(isset($_POST["btnLogin"]))
     {
-        $email = $db->escape_string($_POST["email"]);
+        $username = $db->escape_string($_POST["username"]);
         $password = $db->escape_string($_POST["pass"]);
-        $sql = "SELECT * FROM anggota WHERE email='$email' AND pass=PASSWORD('$password')";
+        $sql = "SELECT * FROM anggota WHERE username='$email' AND pass=PASSWORD('$password')";
         $res = $db->query($sql);
         if($res)
         {
@@ -25,16 +25,17 @@ if($db->connect_errno==0)
                 $_SESSION["id_paket"]=$data["id_paket"];
                 $_SESSION["id_kelas"]=$data["id_kelas"];
                 $_SESSION["email"]=$data["email"];
+                $_SESSION["username"]=$data["username"];
                 $_SESSION["password"]=$data["password"];
-                header("Location: kategori.php");
+                header("Location: index-anggota.php");
             }
             else 
-                header("Location: anggota-login.php?error=1");
+                header("Location: login.php?error=1");
         }
     }
     else 
-        header("Location: anggota-login.php?error=2");
+        header("Location: login.php?error=2");
 }
 else 
-    header("Location: anggota-login.php?error=3");
+    header("Location: login.php?error=3");
 ?>

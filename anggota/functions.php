@@ -64,6 +64,25 @@ function footer(){
   <?php
 }
 
+function countMateri()
+{
+	$db = dbConnect();
+	if($db->connect_errno == 0)
+    {
+        $res = $db->query("SELECT COUNT(*) as jml_materi FROM materi);
+        if($res)
+        {
+            $data = $res->fetch_assoc();
+            $res->free();
+            return $data;
+        }
+        else
+            return FALSE;   
+    }
+    else
+        return FALSE;
+}
+
 function kodeOtomatisTagihan()
 {
     $db = dbConnect();

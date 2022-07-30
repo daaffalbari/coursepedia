@@ -42,7 +42,7 @@
       ?>
       <form action="anggota-login.php" method="post">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="email" placeholder="Email" autocomplete="off" required>
+          <input type="text" class="form-control" name="username" placeholder="Username" autocomplete="off" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
