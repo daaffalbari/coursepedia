@@ -66,51 +66,51 @@ function footer(){
 
 function countMateri()
 {
-	$db = dbConnect();
-	if($db->connect_errno == 0)
-    {
-        $res = $db->query("SELECT COUNT(*) as jml_materi FROM materi);
-        if($res)
-        {
-            $data = $res->fetch_assoc();
-            $res->free();
-            return $data;
-        }
-        else
-            return FALSE;   
+  $db = dbConnect();
+  if($db->connect_errno == 0){
+    $sql = "SELECT COUNT(*) AS jml_materi FROM materi";
+    $res = $db->query($sql);
+    if($res){
+      $data = $res->fetch_assoc();
+      $res->free_result();
+      return $data;
+    } else {
+      return false;
     }
-    else
-        return FALSE;
+  }  else {
+    return false;
+  }
+
 }
 
 function kodeOtomatisTagihan()
-{
-    $db = dbConnect();
-	if($db->connect_errno == 0)
-    {
-        $sql = "SELECT MAX(no_invoice) as kodeTerbesar FROM tagihan";
-        $res = $db->query($sql);
-        if($res)
-        {
-            if($res->num_rows>0)
-            {
-                $data = $res->fetch_assoc();
-                $no_invoice = $data['kodeTerbesar'];
-                $urutan = (int) substr($no_invoice, 10, 4);
-                $urutan++;
+  {
+      $db = dbConnect();
+    if($db->connect_errno == 0)
+      {
+          $sql = "SELECT MAX(kode_tagihan) as max_kode FROM tagihan";
+          $res = $db->query($sql);
+          if($res)
+          {
+              if($res->num_rows>0)
+              {
+                  $data = $res->fetch_assoc();
+                  $no_invoice = $data['kodeTerbesar'];
+                  $urutan = (int) substr($no_invoice, 10, 4);
+                  $urutan++;
 
-                $huruf = "INV/PB/000";
-                $no_invoice = $huruf.sprintf("%04s", $urutan);
-               
-            } else 
-            {
-                $no_invoice = "INV/PB/0001";
-            }
-        }
-        return $no_invoice;
-    }
-    else
-        return FALSE;   
-}
+                  $huruf = "INV/PB/000";
+                  $no_invoice = $huruf.sprintf("%04s", $urutan);
+                
+              } else 
+              {
+                  $no_invoice = "INV/PB/0001";
+              }
+          }
+          return $no_invoice;
+      }
+      else
+          return FALSE;   
+  }
 
 ?>
