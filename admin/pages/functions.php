@@ -137,6 +137,30 @@ function kodeOtomatisKelas()
         return FALSE;   
 }
 
+function kodeOtomatisMentor(){
+  $db = dbConnect();
+  if($db->connect_errno==0){
+    $sql = "SELECT MAX(id_mentor) as kodeTerbesar FROM mentor";
+    $res = $db->query($sql);
+    if($res){
+      if($res->num_rows>0){
+        $data = $res->fetch_assoc();
+        $id_mentor = $data['kodeTerbesar'];
+        $urutan = (int) substr($id_mentor, 1, 3);
+        $urutan++;
+
+        $huruf = "M";
+        $id_mentor = $huruf.sprintf("%03s", $urutan);
+       
+      } else {
+        $id_mentor = "M001";
+      }
+    } return $id_mentor;
+  } else {
+    return FALSE;
+  }
+}
+
 function getDataKelas($id)
 {
     $db = dbConnect();
