@@ -146,14 +146,14 @@ function kodeOtomatisMentor(){
       if($res->num_rows>0){
         $data = $res->fetch_assoc();
         $id_mentor = $data['kodeTerbesar'];
-        $urutan = (int) substr($id_mentor, 1, 3);
+        $urutan = (int) substr($id_mentor, 2, 3);
         $urutan++;
 
-        $huruf = "M";
+        $huruf = "MT";
         $id_mentor = $huruf.sprintf("%03s", $urutan);
        
       } else {
-        $id_mentor = "M001";
+        $id_mentor = "MT001";
       }
     } return $id_mentor;
   } else {
